@@ -3527,7 +3527,6 @@ wi.GetY()));wi.SetBboxChanged()}}GetPropertyValueByIndex(index){switch(index){ca
 		C3.Plugins.Multiplayer.Cnds.IsHost,
 		C3.Plugins.Dictionary.Acts.AddKey,
 		C3.Plugins.System.Cnds.Else,
-		C3.Plugins.System.Acts.SetVar,
 		C3.Plugins.Multiplayer.Cnds.OnSignallingDisconnected,
 		C3.Plugins.Multiplayer.Cnds.OnSignallingError,
 		C3.Plugins.Multiplayer.Exps.ErrorMessage,
@@ -3544,6 +3543,7 @@ wi.GetY()));wi.SetBboxChanged()}}GetPropertyValueByIndex(index){switch(index){ca
 		C3.Plugins.Dictionary.Cnds.ForEachKey,
 		C3.Plugins.Dictionary.Exps.CurrentValue,
 		C3.Plugins.Dictionary.Cnds.CompareCurrentValue,
+		C3.Plugins.System.Acts.SetVar,
 		C3.Plugins.Browser.Acts.ConsoleLog,
 		C3.Plugins.System.Acts.AddVar,
 		C3.Plugins.System.Acts.SetLayerVisible,
@@ -3634,6 +3634,8 @@ wi.GetY()));wi.SetBboxChanged()}}GetPropertyValueByIndex(index){switch(index){ca
 		C3.Behaviors.Tween.Exps.Value,
 		C3.Behaviors.Tween.Cnds.OnTweensFinished,
 		C3.Plugins.Multiplayer.Cnds.IsSupported,
+		C3.Plugins.System.Exps.lowercase,
+		C3.Plugins.System.Exps.right,
 		C3.Plugins.Browser.Acts.Alert,
 		C3.Plugins.Facebook.Cnds.IsLoggedIn,
 		C3.Plugins.Facebook.Acts.LogIn2,
@@ -3742,7 +3744,7 @@ wi.GetY()));wi.SetBboxChanged()}}GetPropertyValueByIndex(index){switch(index){ca
 		{GooglePlay: 0},
 		{FbBtn: 0},
 		{FbLogin: 0},
-		{kisspngcomputericonslogofacebookclipart5b47b045d287b: 0},
+		{FBIcon: 0},
 		{CurrentTurn: 0},
 		{rows: 0},
 		{cols: 0},
@@ -3925,7 +3927,6 @@ wi.GetY()));wi.SetBboxChanged()}}GetPropertyValueByIndex(index){switch(index){ca
 		() => "Joined room as peer",
 		() => "Peer",
 		() => "Attempting to establish connection to host...",
-		() => "getready",
 		() => "Signalling disconnected",
 		p => {
 			const f0 = p._GetNode(0).GetBoundMethod();
@@ -4341,6 +4342,16 @@ wi.GetY()));wi.SetBboxChanged()}}GetPropertyValueByIndex(index){switch(index){ca
 		p => {
 			const v0 = p._GetNode(0).GetVar();
 			return () => ("User Name: " + v0.GetValue());
+		},
+		p => {
+			const f0 = p._GetNode(0).GetBoundMethod();
+			const v1 = p._GetNode(1).GetVar();
+			const f2 = p._GetNode(2).GetBoundMethod();
+			const f3 = p._GetNode(3).GetBoundMethod();
+			const v4 = p._GetNode(4).GetVar();
+			const f5 = p._GetNode(5).GetBoundMethod();
+			const v6 = p._GetNode(6).GetVar();
+			return () => (f0(v1.GetValue(), 1) + f2(f3(v4.GetValue(), (f5(v6.GetValue()) - 1))));
 		},
 		() => "Multiplayer not suppoeted",
 		() => "Facebook",
