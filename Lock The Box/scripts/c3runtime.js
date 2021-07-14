@@ -3593,13 +3593,13 @@ wi.GetY()));wi.SetBboxChanged()}}GetPropertyValueByIndex(index){switch(index){ca
 		C3.Plugins.Browser.Acts.RequestFullScreen,
 		C3.Plugins.Sprite.Acts.SetVisible,
 		C3.Plugins.Text.Acts.SetVisible,
-		C3.Plugins.System.Cnds.PickByEvaluate,
-		C3.Plugins.System.Exps.find,
+		C3.Plugins.Audio.Acts.Play,
+		C3.Plugins.DrawingCanvas.Acts.Line,
 		C3.Plugins.Sprite.Exps.X,
 		C3.Plugins.Sprite.Exps.Y,
-		C3.Plugins.DrawingCanvas.Acts.Line,
 		C3.Plugins.System.Exps.rgba,
-		C3.Plugins.System.Cnds.TriggerOnce,
+		C3.Plugins.System.Cnds.PickByEvaluate,
+		C3.Plugins.System.Exps.find,
 		C3.Plugins.Touch.Cnds.OnTapGestureObject,
 		C3.Plugins.Sprite.Cnds.IsOverlapping,
 		C3.Plugins.Sprite.Cnds.IsBoolInstanceVarSet,
@@ -3770,6 +3770,9 @@ wi.GetY()));wi.SetBboxChanged()}}GetPropertyValueByIndex(index){switch(index){ca
 		{margin: 0},
 		{horz_marging: 0},
 		{vert_margin: 0},
+		{Last_X: 0},
+		{Last_Y: 0},
+		{end_id: 0},
 		{LastX: 0},
 		{LastY: 0},
 		{Last_i: 0},
@@ -4055,6 +4058,17 @@ wi.GetY()));wi.SetBboxChanged()}}GetPropertyValueByIndex(index){switch(index){ca
 		() => 0.17,
 		() => 15,
 		() => 3.5,
+		() => "tap",
+		() => "whosh",
+		p => {
+			const f0 = p._GetNode(0).GetBoundMethod();
+			return () => f0(0, 0, 0, 100);
+		},
+		p => {
+			const n0 = p._GetNode(0);
+			const v1 = p._GetNode(1).GetVar();
+			return () => (and((n0.ExpInstVar() + "-"), v1.GetValue()) + "-");
+		},
 		p => {
 			const n0 = p._GetNode(0);
 			const v1 = p._GetNode(1).GetVar();
@@ -4094,15 +4108,6 @@ wi.GetY()));wi.SetBboxChanged()}}GetPropertyValueByIndex(index){switch(index){ca
 			const v0 = p._GetNode(0).GetVar();
 			const v1 = p._GetNode(1).GetVar();
 			return () => (v0.GetValue() - v1.GetValue());
-		},
-		p => {
-			const f0 = p._GetNode(0).GetBoundMethod();
-			return () => f0(0, 0, 0, 100);
-		},
-		p => {
-			const n0 = p._GetNode(0);
-			const v1 = p._GetNode(1).GetVar();
-			return () => (and((n0.ExpInstVar() + "-"), v1.GetValue()) + "-");
 		},
 		p => {
 			const f0 = p._GetNode(0).GetBoundMethod();
@@ -4198,6 +4203,7 @@ wi.GetY()));wi.SetBboxChanged()}}GetPropertyValueByIndex(index){switch(index){ca
 			return () => and("isBoxMade:", v0.GetValue());
 		},
 		() => "Dialog",
+		() => "gameover",
 		() => "max",
 		p => {
 			const n0 = p._GetNode(0);
@@ -4297,6 +4303,7 @@ wi.GetY()));wi.SetBboxChanged()}}GetPropertyValueByIndex(index){switch(index){ca
 			const v4 = p._GetNode(4).GetVar();
 			return () => f0((v1.GetValue() / 2), (v2.GetValue() / 2), (v3.GetValue() / 2), v4.GetValue());
 		},
+		() => "success",
 		() => "Dead",
 		p => {
 			const n0 = p._GetNode(0);
